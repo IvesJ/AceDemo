@@ -1,15 +1,12 @@
 package com.ace.acedemo.view;
 
-import android.app.ActivityOptions;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 
 import androidx.annotation.Nullable;
 
 import com.ace.acedemo.databinding.ActivityImageBinding;
-import com.ace.acedemo.utils.GlideUtil;
 
 public class ImageActivity extends BaseActivity<ActivityImageBinding>{
 
@@ -25,13 +22,11 @@ public class ImageActivity extends BaseActivity<ActivityImageBinding>{
     }
 
     private void initView() {
-        GlideUtil.loadBlurPic(this, mView.ivPic);
-        mView.ivPic.setOnClickListener(new View.OnClickListener() {
+        mView.btnTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent jump = new Intent(ImageActivity.this, AnimActivity.class);
-                startActivity(jump, ActivityOptions.makeSceneTransitionAnimation(ImageActivity.this,
-                        mView.ivPic, "shareImg").toBundle());
+                startActivity(jump);
             }
         });
     }

@@ -3,6 +3,7 @@
     package="com.ace.acedemo">
 
     <application
+        android:name=".DemoApp"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -13,18 +14,23 @@
             android:name=".view.MainActivity"
             android:exported="true"
             android:launchMode="singleTask">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
         </activity>
 
         <activity
-            android:name=".view.TestBActivity"
-            android:launchMode="singleTask"></activity>
+            android:name=".view.ImageActivity"
+            android:exported="true" />
 
-        <activity android:name=".view.ImageActivity"
+        <activity
+            android:name=".view.AnimActivity"
+            android:theme="@style/DialogActivityStyle"/>
+
+        <activity
+            android:name=".view.ListActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,19 +39,17 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".view.AnimActivity"></activity>
-
-<!--        <receiver android:name=".broadcast.AceReceiver"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="com.ace.receiver"/>-->
-<!--            </intent-filter>-->
-<!--        </receiver>-->
+        <!--        <receiver android:name=".broadcast.AceReceiver"-->
+        <!--            android:exported="true">-->
+        <!--            <intent-filter>-->
+        <!--                <action android:name="com.ace.receiver"/>-->
+        <!--            </intent-filter>-->
+        <!--        </receiver>-->
 
     </application>
 
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="BROA" />
 
 

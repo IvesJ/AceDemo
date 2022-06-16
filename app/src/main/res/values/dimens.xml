@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="item_interval">10dp</dimen>
+    <dimen name="dialog_size">350dp</dimen>
+
+</resources>
