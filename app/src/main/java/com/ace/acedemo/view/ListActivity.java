@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.ace.acedemo.adapter.ListAdapter;
 import com.ace.acedemo.anim.ActivityAnimationHelper;
+import com.ace.acedemo.anim.CustomAnimationHelper;
 import com.ace.acedemo.databinding.ActivityListBinding;
 import com.ace.acedemo.decoration.ListItemDecoration;
 
@@ -44,7 +45,8 @@ public class ListActivity extends BaseActivity<ActivityListBinding> {
 
     private void jumpActivity(View view) {
         Intent intent = new Intent(this, AnimActivity.class);
-        ActivityAnimationHelper.startActivity(this, intent, view);
-//        startActivity(intent);
+//        ActivityAnimationHelper.startActivityForResult(this, intent, view);
+//        ActivityAnimationHelper.startActivity(this, intent, view);
+        CustomAnimationHelper.startActivity(this, intent, view);
     }
 }

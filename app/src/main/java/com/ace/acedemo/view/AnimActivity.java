@@ -18,7 +18,6 @@ public class AnimActivity extends BaseActivity<ActivityAnimBinding>{
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initWindow();
     }
 
     @Override
@@ -30,13 +29,6 @@ public class AnimActivity extends BaseActivity<ActivityAnimBinding>{
     protected void onStart() {
         super.onStart();
         ActivityAnimationHelper.animScaleUp(this, getIntent());
-    }
-
-    private void initWindow() {
-        WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
-        layoutParams.width = (int) ResourceUtil.getDimens(R.dimen.dialog_size);
-        layoutParams.height = (int) ResourceUtil.getDimens(R.dimen.dialog_size);
-        getWindow().setAttributes(layoutParams);
     }
 
     @Override

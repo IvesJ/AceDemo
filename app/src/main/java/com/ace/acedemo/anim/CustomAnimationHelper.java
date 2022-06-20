@@ -6,10 +6,13 @@ import static com.ace.acedemo.anim.AnimationConstants.ACTIVITY_ANIMATION_PIVOTY;
 import static com.ace.acedemo.anim.AnimationConstants.ACTIVITY_VIEW_HEIGHT;
 import static com.ace.acedemo.anim.AnimationConstants.ACTIVITY_VIEW_WIDTH;
 
+import android.animation.Animator;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -37,8 +40,8 @@ import java.lang.reflect.Method;
  * Created by suxq on 2017/11/14.
  */
 
-public class ActivityAnimationHelper {
-    private static final String TAG = ActivityAnimationHelper.class.getSimpleName();
+public class CustomAnimationHelper {
+    private static final String TAG = CustomAnimationHelper.class.getSimpleName();
     private static Interpolator sScaleUpInterpolator = PathInterpolatorCompat.create(0.52f, 0.14f, 0.36f, 0.72f);
     private static Interpolator sScaleDownInterpolator = PathInterpolatorCompat.create(0.44f, 0.2f, 0.56f, 0.62f);
     private static final int ANIM_STATE_PREPARE = 1;
@@ -50,21 +53,18 @@ public class ActivityAnimationHelper {
             activity.startActivityForResult(intent, requestCode);
             return;
         }
-        listItemAnim(view, new Animation.AnimationListener() {
+
+        listItemAnim(view, new ValueAnimator.AnimatorUpdateListener() {
             @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                activity.startActivityForResult(intentWrapper(activity, intent, view), requestCode);
-                activity.overridePendingTransition(0, 0);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float alpha = (float) animation.getAnimatedValue();
+                Log.d(TAG, "onAnimationUpdate: " + alpha);
+                if (alpha == 0.0f) {
+                    Log.d(TAG, "onAnimationUpdate: fuck");
+                    animation.removeAllUpdateListeners();
+                    activity.startActivityForResult(intentWrapper(activity, intent, view), requestCode);
+                    activity.overridePendingTransition(0, 0);
+                }
             }
         });
     }
@@ -74,21 +74,17 @@ public class ActivityAnimationHelper {
             activity.startActivity(intent);
             return;
         }
-        listItemAnim(view, new Animation.AnimationListener() {
+        listItemAnim(view, new ValueAnimator.AnimatorUpdateListener() {
             @Override
-            public void onAnimationStart(Animation animation) {
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                activity.startActivity(intentWrapper(activity, intent, view));
-                activity.overridePendingTransition(0, 0);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {
-
+            public void onAnimationUpdate(ValueAnimator animation) {
+                float alpha = (float) animation.getAnimatedValue();
+                Log.d(TAG, "onAnimationUpdate: " + alpha);
+                if (alpha <= 0.8f) {
+                    Log.d(TAG, "onAnimationUpdate: fuck");
+                    animation.removeAllUpdateListeners();
+                    activity.startActivity(intentWrapper(activity, intent, view));
+                    activity.overridePendingTransition(0, 0);
+                }
             }
         });
     }
@@ -115,14 +111,31 @@ public class ActivityAnimationHelper {
         }
     }
 
-    private static void listItemAnim(View view, Animation.AnimationListener animationListener) {
+    private static void listItemAnim(View view, ValueAnimator.AnimatorUpdateListener listener) {
         int[] location = new int[2];
         view.getLocationOnScreen(location);
-        ScaleAnimation scaleAnimation = new ScaleAnimation(1.0f, 0.97f, 1.0f, 0.97f, Animation.RELATIVE_TO_SELF, 0.5f, Animation.RELATIVE_TO_SELF, 0.5f);
-        scaleAnimation.setDuration(100);
-        scaleAnimation.setInterpolator(new LinearInterpolator());
-        scaleAnimation.setAnimationListener(animationListener);
-        view.startAnimation(scaleAnimation);
+
+        ObjectAnimator scaleAminX1 = ObjectAnimator.ofFloat(view, "scaleX", 1.0f, 0.97f);
+        ObjectAnimator scaleAminY1 = ObjectAnimator.ofFloat(view, "scaleY", 1.0f, 0.97f);
+
+        ObjectAnimator translateAnimX = ObjectAnimator.ofFloat(view, "x", location[0], location[0] + view.getMeasuredWidth() / 2);
+        ObjectAnimator scaleAminX2 = ObjectAnimator.ofFloat(view, "scaleX", 0.97f, 1.5f);
+        ObjectAnimator scaleAminY2 = ObjectAnimator.ofFloat(view, "scaleY", 0.97f, 1.5f);
+        ObjectAnimator alphaAnim = ObjectAnimator.ofFloat(view, "alpha", 1.0f, 0.0f);
+        alphaAnim.addUpdateListener(listener);
+
+        AnimatorSet animatorSet1 = new AnimatorSet();
+        animatorSet1.playTogether(scaleAminX1, scaleAminY1);
+        animatorSet1.setInterpolator(sScaleDownInterpolator);
+        animatorSet1.setDuration(1000);
+        animatorSet1.start();
+
+        AnimatorSet animatorSet2 = new AnimatorSet();
+        animatorSet2.playTogether(translateAnimX, scaleAminX2, scaleAminY2, alphaAnim);
+        animatorSet2.setInterpolator(sScaleDownInterpolator);
+        animatorSet2.setDuration(1000);
+        animatorSet2.setStartDelay(1005);
+        animatorSet2.start();
     }
 
     public static void animScaleUp(BaseActivity activity, Intent intent) {
