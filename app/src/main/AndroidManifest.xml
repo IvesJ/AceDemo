@@ -29,6 +29,9 @@
             android:name=".view.AnimActivity"
             android:theme="@style/DialogActivityStyle"/>
 
+        <activity android:name=".view.RevealAnimActivity"
+            android:theme="@style/DialogActivityStyle"/>
+
         <activity
             android:name=".view.ListActivity"
             android:exported="true">

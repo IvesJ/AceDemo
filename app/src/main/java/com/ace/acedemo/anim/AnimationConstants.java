@@ -7,7 +7,7 @@ import android.os.Build;
  * Created by caill on 2017/11/9.
  */
 
-class AnimationConstants {
+public class AnimationConstants {
     public static boolean ENABLE_ANIMATION; //是否开启动画效果
 
     //Activity动画常量值

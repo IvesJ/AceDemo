@@ -1,4 +1,4 @@
-package com.ace.acedemo.anim;
+package com.ace.acedemo.anim.animator;
 
 import static com.ace.acedemo.anim.AnimationConstants.ACTIVITY_ANIMATION_ENABLE;
 import static com.ace.acedemo.anim.AnimationConstants.ACTIVITY_ANIMATION_PIVOTX;
@@ -6,7 +6,6 @@ import static com.ace.acedemo.anim.AnimationConstants.ACTIVITY_ANIMATION_PIVOTY;
 import static com.ace.acedemo.anim.AnimationConstants.ACTIVITY_VIEW_HEIGHT;
 import static com.ace.acedemo.anim.AnimationConstants.ACTIVITY_VIEW_WIDTH;
 
-import android.animation.Animator;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
@@ -21,13 +20,14 @@ import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.Interpolator;
-import android.view.animation.LinearInterpolator;
 import android.view.animation.ScaleAnimation;
 import android.view.animation.TranslateAnimation;
 
 import androidx.core.view.animation.PathInterpolatorCompat;
 
 import com.ace.acedemo.R;
+import com.ace.acedemo.anim.AnimationConstants;
+import com.ace.acedemo.anim.listener.OnAnimationListener;
 import com.ace.acedemo.utils.ResourceUtil;
 import com.ace.acedemo.utils.ScreenUtils;
 import com.ace.acedemo.view.BaseActivity;

@@ -1,17 +1,12 @@
 package com.ace.acedemo.view;
 
 import android.os.Bundle;
-import android.transition.Explode;
-import android.view.Window;
-import android.view.WindowManager;
 
 import androidx.annotation.Nullable;
 
-import com.ace.acedemo.R;
-import com.ace.acedemo.anim.AbsAnimationListener;
-import com.ace.acedemo.anim.ActivityAnimationHelper;
+import com.ace.acedemo.anim.listener.AbsAnimationListener;
+import com.ace.acedemo.anim.animator.ActivityAnimationHelper;
 import com.ace.acedemo.databinding.ActivityAnimBinding;
-import com.ace.acedemo.utils.ResourceUtil;
 
 public class AnimActivity extends BaseActivity<ActivityAnimBinding>{
 

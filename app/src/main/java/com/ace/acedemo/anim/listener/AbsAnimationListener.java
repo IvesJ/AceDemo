@@ -1,10 +1,10 @@
-package com.ace.acedemo.anim;
+package com.ace.acedemo.anim.listener;
 
 /**
  * Created by suxq on 2017/11/14.
  */
 
-public abstract class AbsAnimationListener implements OnAnimationListener{
+public abstract class AbsAnimationListener implements OnAnimationListener {
     @Override
     public void onAnimationEnd() {}
 
