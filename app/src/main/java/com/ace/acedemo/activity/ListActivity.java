@@ -1,4 +1,4 @@
-package com.ace.acedemo.view;
+package com.ace.acedemo.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,7 +8,6 @@ import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.GridLayoutManager;
 
 import com.ace.acedemo.adapter.ListAdapter;
-import com.ace.acedemo.anim.animator.CustomAnimationHelper;
 import com.ace.acedemo.databinding.ActivityListBinding;
 import com.ace.acedemo.decoration.ListItemDecoration;
 

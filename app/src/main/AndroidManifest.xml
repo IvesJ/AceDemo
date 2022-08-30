@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ace.acedemo">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="BROA" />
+
     <application
         android:name=".DemoApp"
         android:allowBackup="true"
@@ -11,29 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AceDemo">
         <activity
-            android:name=".view.MainActivity"
-            android:exported="true"
-            android:launchMode="singleTask">
-            <!--            <intent-filter>-->
-            <!--                <action android:name="android.intent.action.MAIN" />-->
-
-            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
-            <!--            </intent-filter>-->
-        </activity>
-
-        <activity
-            android:name=".view.ImageActivity"
-            android:exported="true" />
-
-        <activity
-            android:name=".view.AnimActivity"
-            android:theme="@style/DialogActivityStyle"/>
-
-        <activity android:name=".view.RevealAnimActivity"
-            android:theme="@style/DialogActivityStyle"/>
-
-        <activity
-            android:name=".view.ListActivity"
+            android:name=".activity.CustomViewActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,19 +23,24 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <!--        <receiver android:name=".broadcast.AceReceiver"-->
-        <!--            android:exported="true">-->
-        <!--            <intent-filter>-->
-        <!--                <action android:name="com.ace.receiver"/>-->
-        <!--            </intent-filter>-->
-        <!--        </receiver>-->
-
+        <activity
+            android:name=".activity.MainActivity"
+            android:exported="true"
+            android:launchMode="singleTask">
+        </activity>
+        <activity
+            android:name=".activity.ImageActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activity.AnimActivity"
+            android:theme="@style/DialogActivityStyle" />
+        <activity
+            android:name=".activity.RevealAnimActivity"
+            android:theme="@style/DialogActivityStyle" />
+        <activity
+            android:name=".activity.ListActivity"
+            android:exported="true">
+        </activity>
     </application>
-
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="BROA" />
-
 
 </manifest>

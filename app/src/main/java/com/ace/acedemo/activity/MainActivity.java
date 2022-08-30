@@ -1,8 +1,6 @@
-package com.ace.acedemo.view;
+package com.ace.acedemo.activity;
 
 import android.os.Bundle;
-
-import androidx.viewbinding.ViewBinding;
 
 import com.ace.acedemo.R;
 import com.ace.acedemo.databinding.ActivityBBinding;

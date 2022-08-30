@@ -1,4 +1,4 @@
-package com.ace.acedemo.view;
+package com.ace.acedemo.activity;
 
 import android.os.Bundle;
 

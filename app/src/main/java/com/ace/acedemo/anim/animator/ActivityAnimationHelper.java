@@ -28,7 +28,7 @@ import com.ace.acedemo.anim.AnimationConstants;
 import com.ace.acedemo.anim.listener.OnAnimationListener;
 import com.ace.acedemo.utils.ResourceUtil;
 import com.ace.acedemo.utils.ScreenUtils;
-import com.ace.acedemo.view.BaseActivity;
+import com.ace.acedemo.activity.BaseActivity;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

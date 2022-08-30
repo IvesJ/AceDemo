@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <declare-styleable name="CustomCardView">
+        <attr name="icon" format="reference|color"/>
+        <attr name="main_text" format="string"/>
+        <attr name="sub_text" format="string"/>
+        <attr name="horizontal_interval" format="dimension"/>
+        <attr name="vertical_interval" format="dimension"/>
+        <attr name="hasSub" format="boolean"/>
+    </declare-styleable>
+
+</resources>

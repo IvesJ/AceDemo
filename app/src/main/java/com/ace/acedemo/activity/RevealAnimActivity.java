@@ -1,7 +1,6 @@
-package com.ace.acedemo.view;
+package com.ace.acedemo.activity;
 
 import android.os.Bundle;
-import android.util.Log;
 
 import androidx.annotation.Nullable;
 
